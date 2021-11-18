@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 #if UNITY_EDITOR
 using UnityEditor;
 using System.IO;
@@ -10,18 +11,28 @@ using System.IO;
 
 public class MenuManager : MonoBehaviour
 {
+    public static MenuManager Instance;
+    public string savedName;
+    public string currentName = "Name";
+    public int bestScore = 0;
+    public TMP_InputField nameText;
+     public Text BestScoreText;
+   
+
     [System.Serializable]
     class SaveData
     {
-        public InputField input;
+        public string name;
+        public int bestScore;
     }
-public InputField input;
-public static MenuManager Instance;
+    
+
 
 public void SaveInput()
 {
     SaveData data = new SaveData();
-    data.input = input;
+    data.name = savedName;
+    data.bestScore = bestScore;
     string json = JsonUtility.ToJson(data);
     File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
 }
@@ -33,7 +44,8 @@ public void LoadInput()
     {
         string json = File.ReadAllText(path);
         SaveData data = JsonUtility.FromJson<SaveData>(json);
-        input = data.input;
+        savedName = data.name;
+        bestScore = data.bestScore;
     }
 }
 
@@ -54,11 +66,12 @@ void Awake()
     // Start is called before the first frame update
     void Start()
     {
-        
+       BestScoreText.text = "Best Score: " + MenuManager.Instance.savedName + ": " + MenuManager.Instance.bestScore;
     }
 
     public void StartNew()
     {
+        currentName = nameText.text;
         SceneManager.LoadScene(1);
     }
 
