@@ -27,7 +27,7 @@ public class MenuManager : MonoBehaviour
     }
     
 
-
+// save data json
 public void SaveInput()
 {
     SaveData data = new SaveData();
@@ -36,7 +36,7 @@ public void SaveInput()
     string json = JsonUtility.ToJson(data);
     File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
 }
-
+// load data json
 public void LoadInput()
 {
     string path = Application.persistentDataPath + "/savefile.json";
@@ -68,13 +68,13 @@ void Awake()
     {
        BestScoreText.text = "Best Score: " + MenuManager.Instance.savedName + ": " + MenuManager.Instance.bestScore;
     }
-
+    // start new game from menu
     public void StartNew()
     {
         currentName = nameText.text;
         SceneManager.LoadScene(1);
     }
-
+    // for working buuton Exit in Menu game
     public void Exit()
     {
         #if UNITY_EDITOR
@@ -84,7 +84,7 @@ void Awake()
         #endif
         MenuManager.Instance.SaveInput();
     }
-
+    
     public void GetInput(string name)
     {
         Debug.Log("You Entered " + name);

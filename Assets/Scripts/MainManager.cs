@@ -58,6 +58,7 @@ public class MainManager : MonoBehaviour
                 Ball.AddForce(forceDir * 2.0f, ForceMode.VelocityChange);
             }
         }
+        // load score and game when gameover
         else if (m_GameOver)
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -73,7 +74,7 @@ public class MainManager : MonoBehaviour
             }
         }
     }
-
+    // add point when player gaming
     void AddPoint(int point)
     {
         m_Points += point;
@@ -81,7 +82,7 @@ public class MainManager : MonoBehaviour
     }
 
     
-
+  // active message Game over
     public void GameOver()
     {
         m_GameOver = true;
