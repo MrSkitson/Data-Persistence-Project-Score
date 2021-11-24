@@ -1263,7 +1263,7 @@ MonoBehaviour:
   currentName: Name
   bestScore: 0
   nameText: {fileID: 1779159358}
-  BestScoreText: {fileID: 0}
+  BestScoreText: {fileID: 1257922022}
 --- !u!4 &1662244473
 Transform:
   m_ObjectHideFlags: 0
