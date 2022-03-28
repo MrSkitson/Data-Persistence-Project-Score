@@ -14,7 +14,7 @@ public class MenuManager : MonoBehaviour
     public static MenuManager Instance;
     public string savedName;
     public string currentName = "Name";
-    public int bestScore = 0;
+    public int bestScore = 10;
     public TMP_InputField nameText;
      public Text BestScoreText;
    
@@ -49,19 +49,7 @@ public void LoadInput()
     }
 }
 
-void Awake()
-{
-    //input = GameObject.Find("InputField").GetComponent<InputField>();
-    
-    if (Instance != null)
-    {
-        Destroy(gameObject);
-        return;
-    }
-    Instance = this;
-    DontDestroyOnLoad(gameObject);
-    LoadInput();
-}
+
 
     // Start is called before the first frame update
     void Start()
@@ -91,9 +79,5 @@ void Awake()
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
